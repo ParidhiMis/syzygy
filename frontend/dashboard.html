@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Syzygy Dashboard</title>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,43 +16,59 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <div class="dashboard">
-      <h1 class="dashboard-logo">Syzygy ✦</h1>
+      <!-- Calendar Panel -->
+      <div class="calendar-panel">
+        <h2>Calendar</h2>
 
-      <h2 class="dashboard-title">What are we tracking today?</h2>
+        <p>Coming soon</p>
+      </div>
 
-      <p class="dashboard-subtitle">Pick a category to begin ✨</p>
+      <!-- Calendar Toggle Button -->
+      <div class="toggle-btn" id="calendar-btn">❮</div>
 
-      <div class="grid">
-        <div class="category-card" data-category="Books">
-          <span>📚</span>
-          <h3>Books</h3>
+      <!-- Slide Menu -->
+      <!-- Slide Menu -->
+      <div class="sidebar" id="sidebar">
+        <h2>Looking for something?</h2>
+
+        <div class="sidebar-item">Profile</div>
+
+        <div class="sidebar-item">Settings</div>
+
+        <div class="sidebar-item">About Us</div>
+
+        <div class="sidebar-item">Log Out</div>
+      </div>
+      <!-- Main Section -->
+      <div class="main">
+        <!-- Top Right -->
+        <div class="top-bar">
+          <div class="profile-icon" id="profile-btn">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
+              class="profile-pic"
+            />
+          </div>
+
+          <div class="menu-btn" id="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
 
-        <div class="category-card" data-category="Movies">
-          <span>🎬</span>
-          <h3>Movies</h3>
-        </div>
+        <!-- Center -->
+        <div class="center">
+          <h1 id="welcome-text"></h1>
 
-        <div class="category-card" data-category="TV Shows">
-          <span>📺</span>
-          <h3>TV Shows</h3>
-        </div>
+          <p class="discover-text">What did you discover today?</p>
 
-        <div class="category-card" data-category="Anime">
-          <span>🍥</span>
-          <h3>Anime</h3>
-        </div>
+          <button id="plus-btn">+</button>
 
-        <div class="category-card" data-category="Webcomics">
-          <span>📖</span>
-          <h3>Webcomics</h3>
-        </div>
-
-        <div class="category-card" data-category="Albums">
-          <span>🎵</span>
-          <h3>Albums</h3>
+          <p class="quote">Record your thoughts.</p>
         </div>
       </div>
     </div>

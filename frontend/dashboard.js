@@ -1,14 +1,49 @@
-const cards = document.querySelectorAll(".category-card");
+// Sidebar
+const menuBtn = document.getElementById("menu-btn");
+const sidebar = document.getElementById("sidebar");
 
-cards.forEach(card => {
+menuBtn.addEventListener("click", () => {
 
-    card.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
 
-        const category = card.dataset.category;
+    menuBtn.classList.toggle("active");
 
-        window.location.href =
-            `entry.html?category=${category}`;
+});
 
-    });
+
+// Calendar
+const calendarBtn = document.getElementById("calendar-btn");
+const calendarPanel = document.querySelector(".calendar-panel");
+
+calendarBtn.addEventListener("click", () => {
+
+    calendarPanel.classList.toggle("hidden");
+
+    if(calendarPanel.classList.contains("hidden")){
+
+        calendarBtn.innerHTML = "❯";
+
+    }
+    else{
+
+        calendarBtn.innerHTML = "❮";
+
+    }
+
+});
+
+
+// Greeting
+const welcomeText = document.getElementById("welcome-text");
+
+const currentUser = localStorage.getItem("currentUser");
+
+welcomeText.innerText = currentUser ? `Hey, ${currentUser}` : "Hey!";
+
+
+// Plus button
+document.getElementById("plus-btn").addEventListener("click", ()=>{
+
+    window.location.href="entry.html";
 
 });

@@ -307,7 +307,6 @@ a:hover{
 
     color:white;
 }
-/* ================= DASHBOARD ================= */
 
 .dashboard{
 
@@ -315,94 +314,104 @@ a:hover{
 
     max-width:95vw;
 
+    color:white;
+
+}
+
+.top-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+}
+
+.calendar-card{
+
+    width:230px;
+
+    padding:25px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+}
+
+.calendar-panel{
+
+width:30%;
+
+height:100vh;
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(20px);
+
+padding:40px;
+
+border-radius:0 40px 40px 0;
+}
+
+.profile-icon{
+
+    font-size:2rem;
+
+}
+
+.center{
+
+    margin-top:120px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
     text-align:center;
 
 }
 
-.dashboard-logo{
-
-    font-size:5rem;
-
-    margin-bottom:10px;
-
-}
-
-.dashboard-title{
-
-    margin-bottom:10px;
-
-}
-
-.dashboard-subtitle{
-
-    color:#F4EBFF;
-
-    margin-bottom:40px;
-
-}
-
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:25px;
-
-}
-
-
-.category-card{
-
-    background:
-    rgba(255,255,255,.15);
-
-    border:
-    1px solid rgba(255,255,255,.2);
-
-    backdrop-filter:blur(25px);
-
-    border-radius:35px;
-
-    padding:40px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-.category-card:hover{
-
-    transform:
-    translateY(-10px);
-
-    background:
-    rgba(255,255,255,.22);
-
-}
-
-
-.category-card span{
-
-    font-size:3.5rem;
-
-}
-
-
-.category-card h3{
+.discover-text{
 
     margin-top:15px;
 
-    color:white;
-
     font-size:1.3rem;
+
+    color:#F3E8FF;
 
 }
 
+#plus-btn{
+
+    width:100px;
+
+    height:100px;
+
+    margin-top:40px;
+
+    border-radius:50%;
+
+    font-size:3rem;
+
+}
+
+.quote{
+
+    margin-top:35px;
+
+    color:#F3E8FF;
+
+    opacity:.85;
+
+    font-style:italic;
+
+}
 
 /* ========================================================= */
 /* ================= MOBILE ================================ */
