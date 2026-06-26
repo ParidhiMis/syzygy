@@ -1,4 +1,6 @@
 from models import User
+from security import hash_password
+from security import verify_password
 
 
 def create_user(db, user):
@@ -20,17 +22,16 @@ def create_user(db, user):
     db_user = User(
         username=user.username,
         email=user.email,
-        password=user.password
+        password=hash_password(user.password)
     )
 
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
 
-
-return {
-    "message": "Registration successful"
-}
+    return {
+        "message": "Registration successful"
+    }
 
 
 def login_user(db, user):
@@ -42,8 +43,13 @@ def login_user(db, user):
     if not db_user:
         return {"message": "User not found"}
 
-    if db_user.password != user.password:
-        return {"message": "Incorrect password"}
+    if not verify_password(
+        user.password,
+        db_user.password
+    ):
+        return {
+            "message": "Incorrect password"
+        }
 
     return {
         "message": "Login successful",
