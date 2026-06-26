@@ -1,20 +1,68 @@
 const form = document.querySelector("#login-form");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const username =
-        document.querySelector("#username").value;
+    const email =
+        document.querySelector("#email").value.trim();
 
     const password =
         document.querySelector("#password").value;
 
-    console.log(username);
-    console.log(password);
+    if (!email || !password) {
 
-    // later this will talk to backend
+        alert("Please fill all fields.");
 
-    window.location.href = "dashboard.html";
+        return;
+
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/login",
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    email,
+                    password
+
+                })
+
+            }
+        );
+
+        const data = await response.json();
+
+        alert(data.message);
+
+        if (data.message === "Login successful") {
+
+            localStorage.setItem(
+                "currentUser",
+                data.username
+            );
+
+            window.location.href = "dashboard.html";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert("Unable to connect to the server.");
+
+    }
 
 });

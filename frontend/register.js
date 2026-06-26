@@ -4,66 +4,43 @@ form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const username = document.querySelector("#username").value.trim();
-    const email = document.querySelector("#email").value.trim();
+    const username = document.querySelector("#username").value;
+    const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const confirmPassword = document.querySelector("#confirm-password").value;
 
-    if (!username || !email || !password || !confirmPassword) {
-        alert("Please fill all fields.");
+    if(password !== confirmPassword){
+
+        alert("Passwords do not match");
         return;
-    }
-
-    if (password !== confirmPassword) {
-        alert("Passwords do not match.");
-        return;
-    }
-
-    try {
-
-        const response = await fetch("http://127.0.0.1:8000/register", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-
-                username: username,
-                email: email,
-                password: password
-
-            })
-
-        });
-
-        if (response.ok) {
-
-            alert("Registration successful!");
-
-            window.location.href = "login.html";
-
-        }
-
-        else {
-
-            const error = await response.json();
-
-            console.log(error);
-
-            alert("Registration failed.");
-
-        }
 
     }
 
-    catch (error) {
+    const response = await fetch("http://127.0.0.1:8000/register",{
 
-        console.log(error);
+        method:"POST",
 
-        alert("Cannot connect to server.");
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            username,
+            email,
+            password
+
+        })
+
+    });
+
+    const data = await response.json();
+
+    alert(data.message);
+
+    if(data.message==="Registration successful"){
+
+        window.location.href="login.html";
 
     }
 
