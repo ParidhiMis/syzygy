@@ -1,6 +1,7 @@
 from models import User
 from security import hash_password
 from security import verify_password
+from models import User, Entry
 
 
 def create_user(db, user):
@@ -53,5 +54,34 @@ def login_user(db, user):
 
     return {
         "message": "Login successful",
-        "username": db_user.username
+        "username": db_user.username,
+        "user_id": db_user.id
+    }
+
+
+def create_entry(db, entry):
+
+    db_entry = Entry(
+
+        title=entry.title,
+        media_type=entry.media_type,
+        status=entry.status,
+        rating=entry.rating,
+        review=entry.review,
+        start_date=entry.start_date,
+        finish_date=entry.finish_date,
+        user_id=entry.user_id
+
+    )
+
+    db.add(db_entry)
+
+    db.commit()
+
+    db.refresh(db_entry)
+
+    return {
+
+        "message": "Entry added successfully"
+
     }

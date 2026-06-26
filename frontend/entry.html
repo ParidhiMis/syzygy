@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Add Entry • Syzygy</title>
+
+    <link rel="stylesheet" href="entry.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Add New Entry</h1>
+
+        <p class="subtitle">What did you discover today?</p>
+
+        <form id="entry-form">
+          <input type="text" id="title" placeholder="Title" required />
+
+          <select id="media-type">
+            <option>Movie</option>
+            <option>Series</option>
+            <option>Anime</option>
+            <option>Game</option>
+            <option>Book</option>
+            <option>Webcomic</option>
+          </select>
+
+          <select id="status">
+            <option>Watching</option>
+            <option>Completed</option>
+            <option>Planned</option>
+            <option>Dropped</option>
+          </select>
+
+          <label>Rate it!</label>
+
+          <div class="star-rating">
+            <span class="star" data-value="1">★</span>
+
+            <span class="star" data-value="2">★</span>
+
+            <span class="star" data-value="3">★</span>
+
+            <span class="star" data-value="4">★</span>
+
+            <span class="star" data-value="5">★</span>
+          </div>
+
+          <div class="date-group" id="start-group">
+            <label>Start Date</label>
+
+            <input type="date" id="start-date" />
+          </div>
+
+          <div class="date-group" id="finish-group">
+            <label>Finish Date</label>
+
+            <input type="date" id="finish-date" />
+          </div>
+
+          <textarea
+            id="review"
+            placeholder="How do you wish to remember it?"
+          ></textarea>
+
+          <button type="submit">Save Entry</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="entry.js"></script>
+  </body>
+</html>

@@ -2,9 +2,10 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from database import engine, get_db
 from models import Base
-from schemas import UserCreate, UserLogin
-from crud import create_user, login_user
+from schemas import UserCreate, UserLogin, EntryCreate
+from crud import create_user, login_user, create_entry
 from fastapi.middleware.cors import CORSMiddleware
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -39,3 +40,12 @@ def login(
 ):
 
     return login_user(db, user)
+
+
+@app.post("/entry")
+def add_entry(
+    entry: EntryCreate,
+    db: Session = Depends(get_db)
+):
+
+    return create_entry(db, entry)

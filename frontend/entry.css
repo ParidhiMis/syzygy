@@ -1,0 +1,224 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:#966FD6;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:40px 0;
+
+    font-family:'DM Sans',sans-serif;
+
+    color:white;
+
+}
+
+.container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+}
+
+.card{
+
+    width:100%;
+
+    max-width:580px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+    font-family:'Outfit',sans-serif;
+
+    font-size:2.3rem;
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#F4EBFF;
+
+    margin-bottom:35px;
+
+}
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:14px 18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.18);
+
+    color:white;
+
+    font-size:1rem;
+
+    outline:none;
+
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#ece2ff;
+
+}
+
+select{
+
+    cursor:pointer;
+
+}
+
+select option{
+
+    color:black;
+
+}
+
+textarea{
+
+    resize:none;
+
+    min-height:130px;
+
+}
+
+label{
+
+    font-size:.95rem;
+
+    color:#f4ebff;
+
+}
+
+button{
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    background:white;
+
+    color:#966FD6;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    background:#f5f1ff;
+
+}
+
+@media(max-width:768px){
+
+    .card{
+
+        padding:25px;
+
+    }
+
+}
+
+.star-rating{
+
+    display:flex;
+
+    gap:8px;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+.star{
+
+    font-size:2.2rem;
+
+    color:rgba(255,255,255,.45);
+
+    transition:.2s;
+
+}
+
+.star.active{
+
+    color:#710b99;
+
+}
+
+.star:hover{
+
+    transform:scale(1.15);
+
+}
