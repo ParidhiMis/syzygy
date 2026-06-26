@@ -1,23 +1,70 @@
-const form = document.querySelector("#login-form");
+const form = document.querySelector("#register-form");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const username =
-        document.querySelector("#username").value;
+    const username = document.querySelector("#username").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value;
+    const confirmPassword = document.querySelector("#confirm-password").value;
 
-    const password =
-        document.querySelector("#password").value;
-
-    if (username === "" || password === "") {
-        alert("Please fill all fields");
+    if (!username || !email || !password || !confirmPassword) {
+        alert("Please fill all fields.");
         return;
     }
 
-    alert("Login successful!");
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
 
-    // Later we'll connect this to backend
-    window.location.href = "dashboard.html";
+    try {
+
+        const response = await fetch("http://127.0.0.1:8000/register", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                username: username,
+                email: email,
+                password: password
+
+            })
+
+        });
+
+        if (response.ok) {
+
+            alert("Registration successful!");
+
+            window.location.href = "login.html";
+
+        }
+
+        else {
+
+            const error = await response.json();
+
+            console.log(error);
+
+            alert("Registration failed.");
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        alert("Cannot connect to server.");
+
+    }
 
 });
