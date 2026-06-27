@@ -55,7 +55,8 @@ def login_user(db, user):
     return {
         "message": "Login successful",
         "username": db_user.username,
-        "user_id": db_user.id
+        "user_id": db_user.id,
+        "email": db_user.email
     }
 
 
@@ -64,12 +65,19 @@ def create_entry(db, entry):
     db_entry = Entry(
 
         title=entry.title,
+
         media_type=entry.media_type,
+
         status=entry.status,
+
         rating=entry.rating,
+
         review=entry.review,
+
         start_date=entry.start_date,
+
         finish_date=entry.finish_date,
+
         user_id=entry.user_id
 
     )
@@ -82,6 +90,15 @@ def create_entry(db, entry):
 
     return {
 
-        "message": "Entry added successfully"
+        "message": "Added successfully"
 
     }
+
+
+def get_entries(db, user_id):
+
+    return (
+        db.query(Entry)
+        .filter(Entry.user_id == user_id)
+        .all()
+    )

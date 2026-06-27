@@ -1,3 +1,11 @@
+const userId = localStorage.getItem("userId");
+
+if (!userId) {
+
+    window.location.href = "login.html";
+
+}
+
 // Sidebar
 const menuBtn = document.getElementById("menu-btn");
 const sidebar = document.getElementById("sidebar");
@@ -47,3 +55,19 @@ document.getElementById("plus-btn").addEventListener("click", ()=>{
     window.location.href="entry.html";
 
 });
+
+const userId = localStorage.getItem("userId");
+
+async function loadEntries() {
+
+    const response = await fetch(
+        `http://127.0.0.1:8000/entries/${userId}`
+    );
+
+    const entries = await response.json();
+
+    console.log(entries);
+
+}
+
+loadEntries();

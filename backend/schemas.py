@@ -45,3 +45,22 @@ class EntryResponse(EntryCreate):
 
     class Config:
         from_attributes = True
+
+
+class EntryCreate(BaseModel):
+
+    title: str
+
+    media_type: str
+
+    status: str
+
+    rating: int | None = None
+
+    review: str | None = None
+
+    start_date: date | None = None
+
+    finish_date: date | None = None
+
+    user_id: int

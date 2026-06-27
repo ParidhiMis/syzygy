@@ -46,9 +46,11 @@ form.addEventListener("submit", async (e) => {
 
         if (data.message === "Login successful") {
 
-         localStorage.setItem("currentUser", data.username);
+            localStorage.setItem("currentUser", data.username);
 
-         localStorage.setItem("userId", data.user_id);
+            localStorage.setItem("userId", data.user_id);
+
+            localStorage.setItem("email", data.email);
 
             window.location.href = "dashboard.html";
 

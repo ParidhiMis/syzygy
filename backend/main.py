@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from database import engine, get_db
 from models import Base
 from schemas import UserCreate, UserLogin, EntryCreate
-from crud import create_user, login_user, create_entry
+from crud import create_user, login_user, create_entry, get_entries
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -49,3 +49,15 @@ def add_entry(
 ):
 
     return create_entry(db, entry)
+
+
+@app.get("/entries/{user_id}")
+def read_entries(
+
+    user_id: int,
+
+    db: Session = Depends(get_db)
+
+):
+
+    return get_entries(db, user_id)

@@ -1,3 +1,12 @@
+const userId = localStorage.getItem("userId");
+
+if (!userId) {
+
+    window.location.href = "login.html";
+
+}
+
+
 const stars = document.querySelectorAll(".star");
 const form = document.getElementById("entry-form");
 
