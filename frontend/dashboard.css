@@ -19,51 +19,207 @@ body{
     height:100vh;
 }
 
-/* CALENDAR PANEL */
+/* ---------- CALENDAR PANEL ---------- */
 
 .calendar-panel{
 
-    width:28%;
+    width:440px;
+    min-width:440px;
 
-    background:rgba(255,255,255,.12);
-
-    backdrop-filter:blur(25px);
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(30px);
 
     border-radius:0 40px 40px 0;
 
-    padding:40px;
+    padding:35px;
 
-    transition:.5s;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    transition:.4s;
 
 }
 
 .calendar-panel.hidden{
 
     width:0;
-
+    min-width:0;
     padding:0;
-
     overflow:hidden;
 
 }
 
-/* CALENDAR TOGGLE */
+.calendar-card{
+
+    width:100%;
+
+    background:white;
+
+    color:#b991fb;
+
+    border-radius:10px;
+
+    padding:35px 28px 40px;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.calendar-card h2{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#966FD6;
+
+    margin-bottom:35px;
+
+}
+
+.calendar-panel.hidden{
+    width:0;
+    min-width:0;
+    padding:0;
+    overflow:hidden;
+    border-radius:0;
+}
+
+/* ---------- MONTH ---------- */
+
+.calendar-panel h2{
+
+    text-align:center;
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-top:45px;
+
+    margin-bottom:45px;
+
+}
+
+/* ---------- WEEKDAYS ---------- */
+
+.days-header{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#9B8BC8;
+
+    margin-bottom:24px;
+
+}
+
+/* ---------- GRID ---------- */
+
+.calendar-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    justify-items:center;
+
+    row-gap:18px;
+
+}
+
+/* ---------- DAYS ---------- */
+
+.day{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#966FD6;
+
+    font-size:16px;
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+.day:hover{
+
+    background:#F2EBFF;
+
+    transform:scale(1.08);
+
+}
+
+.today{
+
+    background:#966FD6;
+
+    color:white;
+
+    font-weight:700;
+
+}
+
+.selected{
+
+    background:#7F56D9;
+
+    color:white;
+
+}
+
+.day:empty{
+
+    cursor:default;
+
+}
+
+.day:empty:hover{
+
+    background:transparent;
+
+    transform:none;
+
+}
 
 .toggle-btn{
 
     position:fixed;
 
-    top:30px;
+    top:28px;
 
-    left:30px;
+    left:22px;
 
-    width:42px;
+    width:52px;
 
-    height:42px;
+    height:52px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.16);
 
     backdrop-filter:blur(20px);
 
@@ -73,17 +229,33 @@ body{
 
     align-items:center;
 
+    font-size:24px;
+
     cursor:pointer;
 
     z-index:1000;
 
     transition:.3s;
 
+    user-select:none;
+
 }
 
 .toggle-btn:hover{
 
-    background:rgba(255,255,255,.25);
+    transform:scale(1.08);
+
+    background:rgba(255,255,255,.28);
+
+}
+
+.toggle-btn img{
+
+    width:22px;
+
+    height:22px;
+
+    pointer-events:none;
 
 }
 
@@ -380,5 +552,49 @@ body{
         font-size:1rem;
 
     }
+
+}
+
+/* ---------- ENTRIES ---------- */
+
+#entries-container{
+
+    margin-top:35px;
+
+    width:420px;
+
+    max-height:280px;
+
+    overflow-y:auto;
+
+}
+
+.entry-card{
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    padding:18px;
+
+    border-radius:14px;
+
+    margin-bottom:15px;
+
+    text-align:left;
+
+}
+
+.entry-card h3{
+
+    margin-bottom:8px;
+
+}
+
+.entry-card p{
+
+    opacity:.9;
+
+    margin:4px 0;
 
 }
