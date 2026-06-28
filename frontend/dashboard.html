@@ -43,6 +43,43 @@
         <!-- Top Right -->
         <div class="top-bar">
           <div class="search-container">
+            <div class="filter-wrapper">
+              <button id="filter-btn">
+                <img src="images/filter.svg" alt="" />
+              </button>
+
+              <div class="filter-panel" id="filter-panel">
+                <select id="type-filter">
+                  <option value="">All Types</option>
+                  <option>Movie</option>
+                  <option>Series</option>
+                  <option>Anime</option>
+                  <option>Book</option>
+                  <option>Game</option>
+                </select>
+
+                <select id="status-filter">
+                  <option value="">All Status</option>
+                  <option>Completed</option>
+                  <option>Watching</option>
+                  <option>Reading</option>
+                  <option>Playing</option>
+                  <option>Planned</option>
+                  <option>Dropped</option>
+                </select>
+
+                <select id="rating-filter">
+                  <option value="">Any Rating</option>
+                  <option value="5">⭐⭐⭐⭐⭐</option>
+                  <option value="4">⭐⭐⭐⭐+</option>
+                  <option value="3">⭐⭐⭐+</option>
+                  <option value="2">⭐⭐+</option>
+                  <option value="1">⭐+</option>
+                </select>
+
+                <button id="clear-filters">Clear Filters</button>
+              </div>
+            </div>
             <input type="text" id="search-input" placeholder="Search..." />
 
             <button id="search-btn">

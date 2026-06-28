@@ -561,6 +561,127 @@ body{
 
 }
 
+.filter-wrapper{
+
+    position:relative;
+
+}
+
+#filter-btn{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    padding:0;
+
+}
+
+#filter-btn img{
+
+    width:18px;
+    height:18px;
+
+    object-fit:contain;
+
+}
+.filter-panel{
+
+    position:absolute;
+
+    top:60px;
+    right:0;
+
+    width:220px;
+
+    display:none;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(30px);
+
+}
+
+.filter-panel.open{
+
+    display:flex;
+
+}
+
+.filter-panel select{
+
+    width:100%;
+
+    padding:10px 14px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.18);
+
+    color:white;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+}
+
+.filter-panel option{
+
+    color:black;
+
+}
+
+#clear-filters{
+
+    margin-top:8px;
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ffffff22;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+#clear-filters:hover{
+
+    background:#ffffff33;
+
+}
+
 /* ==========================================================
    PROFILE
 ========================================================== */

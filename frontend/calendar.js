@@ -1,3 +1,7 @@
+let selectedType = "";
+let selectedStatus = "";
+let selectedRating = "";
+
 const panel = document.querySelector(".calendar-panel");
 
 const calendarUserId = localStorage.getItem("userId");
@@ -258,28 +262,42 @@ function displayEntries(){
 
     }
 
-  let filtered;
+let filtered = allEntries.filter(entry => {
 
-if(searchQuery){
-
-    filtered = allEntries.filter(entry =>
+    const matchesSearch =
+        !searchQuery ||
 
         entry.title.toLowerCase().includes(searchQuery) ||
 
         entry.media_type.toLowerCase().includes(searchQuery) ||
 
-        entry.status.toLowerCase().includes(searchQuery)
+        entry.status.toLowerCase().includes(searchQuery);
 
+    const matchesType =
+        !selectedType ||
+        entry.media_type === selectedType;
+
+    const matchesStatus =
+        !selectedStatus ||
+        entry.status === selectedStatus;
+
+    const matchesRating =
+        !selectedRating ||
+        entry.rating >= Number(selectedRating);
+
+    const matchesDate =
+        searchQuery ||
+        entry.start_date.slice(0,10) === selectedDate;
+
+    return (
+        matchesSearch &&
+        matchesType &&
+        matchesStatus &&
+        matchesRating &&
+        matchesDate
     );
 
-}
-else{
-
-    filtered = allEntries.filter(entry =>
-        entry.start_date.slice(0,10) === selectedDate
-    );
-
-}
+});
 
 console.log(filtered);
 console.log(searchQuery);
@@ -376,3 +394,42 @@ if (calendarSearchInput) {
     });
 
 }
+
+const typeFilter = document.getElementById("type-filter");
+const statusFilter = document.getElementById("status-filter");
+const ratingFilter = document.getElementById("rating-filter");
+
+typeFilter.addEventListener("change", () => {
+
+    selectedType = typeFilter.value;
+    displayEntries();
+
+});
+
+statusFilter.addEventListener("change", () => {
+
+    selectedStatus = statusFilter.value;
+    displayEntries();
+
+});
+
+ratingFilter.addEventListener("change", () => {
+
+    selectedRating = ratingFilter.value;
+    displayEntries();
+
+});
+
+clearFilters.addEventListener("click", () => {
+
+    selectedType = "";
+    selectedStatus = "";
+    selectedRating = "";
+
+    typeFilter.value = "";
+    statusFilter.value = "";
+    ratingFilter.value = "";
+
+    displayEntries();
+
+});
