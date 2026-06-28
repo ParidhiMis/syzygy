@@ -1,3 +1,8 @@
+/* ==========================================================
+   RESET & GLOBAL
+========================================================== */
+
+
 *{
     margin:0;
     padding:0;
@@ -12,19 +17,33 @@ body{
     color:white;
 }
 
-/* DASHBOARD */
+/* ==========================================================
+   DASHBOARD LAYOUT
+========================================================== */
 
 .dashboard{
     display:flex;
-    height:100vh;
+    min-height:100vh;
 }
 
-/* ---------- CALENDAR PANEL ---------- */
+.main{
+
+    flex:1;
+
+    position:relative;
+  
+}
+
+/* ==========================================================
+   CALENDAR PANEL
+========================================================== */
 
 .calendar-panel{
 
     width:440px;
     min-width:440px;
+
+    height:100vh;
 
     background:rgba(255,255,255,.10);
     backdrop-filter:blur(30px);
@@ -33,51 +52,11 @@ body{
 
     padding:35px;
 
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-
-    transition:.4s;
-
-}
-
-.calendar-panel.hidden{
-
-    width:0;
-    min-width:0;
-    padding:0;
     overflow:hidden;
 
-}
-
-.calendar-card{
-
-    width:100%;
-
-    background:white;
-
-    color:#b991fb;
-
-    border-radius:10px;
-
-    padding:35px 28px 40px;
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.15);
-
-}
-
-.calendar-card h2{
-
-    text-align:center;
-
-    font-size:30px;
-
-    font-weight:800;
-
-    color:#966FD6;
-
-    margin-bottom:35px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
 
 }
 
@@ -89,9 +68,50 @@ body{
     border-radius:0;
 }
 
-/* ---------- MONTH ---------- */
+.calendar-card{
 
-.calendar-panel h2{
+    width:100%;
+    background:white;
+    border-radius:10px;
+
+    padding:35px 28px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+    height:calc(100vh - 70px);
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+/* ==========================================================
+   CALENDAR HEADER
+========================================================== */
+
+.calendar-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.calendar-header h2{
+
+    margin:0;
+
+    font-size:30px;
+
+    color:#966FD6;
+
+}
+
+.calendar-header h2{
 
     text-align:center;
 
@@ -105,7 +125,146 @@ body{
 
 }
 
-/* ---------- WEEKDAYS ---------- */
+
+/* ==========================================================
+   CALENDAR ENTRY CARDS
+========================================================== */
+
+#calendar-entries{
+
+    margin-top:20px;
+    padding-top:18px;
+
+    border-top:1px solid #E6E6E6;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding-right:6px;
+
+}
+
+#calendar-entries::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+#calendar-entries::-webkit-scrollbar-thumb{
+
+    background:#C8B3F5;
+
+    border-radius:20px;
+
+}
+
+#calendar-entries::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.calendar-entry{
+
+    width:100%;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    background:#F8F6FF;
+
+}
+
+.calendar-entry h4{
+
+    color:#966FD6;
+    font-size:15px;
+    margin-bottom:3px;
+    margin:0 0 1px;
+}
+
+.calendar-entry p{
+
+   margin:0;
+   font-size:12px;
+   line-height:1.1;
+   color:#777;
+
+}
+
+.entry-rating{
+
+    color:#F4B400;
+    font-size:14px;
+    margin:4px 0;
+    margin-top:2px;
+
+}
+
+/* ==========================================================
+   CALENDAR ENTRY DOTS
+========================================================== */
+
+.entry-dots{
+
+    position:absolute;
+
+    bottom:4px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:3px;
+
+}
+
+.dot{
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+}
+
+.dot-movie{
+    background:#EF4444;
+}
+
+.dot-series{
+    background:#3B82F6;
+}
+
+.dot-anime{
+    background:#EC4899;
+}
+
+.dot-book{
+    background:#10B981;
+}
+
+.dot-game{
+    background:#F59E0B;
+}
+
+.dot-default{
+    background:#000;
+}
+
+
+/* ==========================================================
+   CALENDAR GRID
+========================================================== */
 
 .days-header{
 
@@ -125,8 +284,6 @@ body{
 
 }
 
-/* ---------- GRID ---------- */
-
 .calendar-grid{
 
     display:grid;
@@ -138,8 +295,6 @@ body{
     row-gap:18px;
 
 }
-
-/* ---------- DAYS ---------- */
 
 .day{
 
@@ -163,6 +318,10 @@ body{
 
     cursor:pointer;
 
+}
+
+.day{
+    position:relative;
 }
 
 .day:hover{
@@ -202,6 +361,28 @@ body{
     background:transparent;
 
     transform:none;
+
+}
+
+/* ==========================================================
+   TOP BAR
+========================================================== */
+
+.top-bar{
+
+    position:fixed;
+
+    top:30px;
+
+    right:40px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    z-index:2000;
 
 }
 
@@ -259,37 +440,130 @@ body{
 
 }
 
-/* MAIN AREA */
+/* ==========================================================
+   SEARCH BAR
+========================================================== */
 
-.main{
+.search-container{
 
-    flex:1;
+    display:flex;
+    align-items:center;
 
     position:relative;
 
 }
 
-/* TOP BAR */
+#search-input{
 
-.top-bar{
+    width:0;
 
-    position:fixed;
+    opacity:0;
 
-    top:30px;
+    padding:10px 42px 10px 18px;
 
-    right:40px;
+    border:none;
+    outline:none;
 
-    display:flex;
+    border-radius:999px;
 
-    align-items:center;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
 
-    gap:15px;
+    color:white;
 
-    z-index:2000;
+    font-size:15px;
+
+    transition:
+        width .35s ease,
+        opacity .25s ease,
+        padding .35s ease;
 
 }
 
-/* ICONS */
+#search-input::placeholder{
+
+    color:#EEE7FF;
+
+}
+
+.search-container.active #search-input{
+
+    width:240px;
+
+    opacity:1;
+
+}
+
+#search-btn{
+
+    position:absolute;
+
+    right:0;
+
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+#search-btn:hover{
+
+    background:rgba(255,255,255,.25);
+
+}
+
+#search-btn img{
+
+    width:18px;
+    height:18px;
+
+}
+
+.empty-search{
+
+    width:100%;
+    height:180px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    color:#7A6A9A;
+
+    font-size:15px;
+
+    gap:12px;
+
+}
+
+.empty-search p{
+
+    margin:0;
+
+}
+
+/* ==========================================================
+   PROFILE
+========================================================== */
 
 .profile-pic{
 
@@ -302,6 +576,7 @@ body{
     object-fit:cover;
 
 }
+
 .profile-icon{
 
     width:42px;
@@ -330,6 +605,10 @@ body{
     background:rgba(255,255,255,.25);
 
 }
+
+/* ==========================================================
+   MENU BUTTON
+========================================================== */
 
 .menu-btn{
 
@@ -389,7 +668,10 @@ body{
 
 }
 
-/* CENTER SECTION */
+/* ==========================================================
+   CENTER CONTENT
+========================================================== */
+
 .center{
 
     position:absolute;
@@ -480,7 +762,9 @@ body{
 
 }
 
-/* SIDEBAR */
+/* ==========================================================
+   SIDEBAR
+========================================================== */
 
 .sidebar{
     position:fixed;
@@ -531,31 +815,10 @@ body{
     transform:translateX(5px);
 }
 
-/* MOBILE */
 
-@media(max-width:768px){
-
-    .calendar-panel{
-
-        display:none;
-
-    }
-
-    .center h1{
-
-        font-size:2.7rem;
-
-    }
-
-    .discover-text{
-
-        font-size:1rem;
-
-    }
-
-}
-
-/* ---------- ENTRIES ---------- */
+/* ==========================================================
+   DASHBOARD ENTRY LIST
+========================================================== */
 
 #entries-container{
 
@@ -596,5 +859,79 @@ body{
     opacity:.9;
 
     margin:4px 0;
+
+}
+
+.entry-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:4px;
+
+    margin-top:4px;
+
+}
+
+
+.entry-actions button{
+
+    width:28px;
+    height:28px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#F3F3F3;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.entry-actions button img{
+
+    width:16px;
+    height:16px;
+
+}
+
+.entry-actions button:hover{
+
+    background:#E8E0FA;
+    transform:scale(1.05);
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+
+@media(max-width:768px){
+
+    .calendar-panel{
+
+        display:none;
+
+    }
+
+    .center h1{
+
+        font-size:2.7rem;
+
+    }
+
+    .discover-text{
+
+        font-size:1rem;
+
+    }
 
 }

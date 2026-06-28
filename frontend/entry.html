@@ -20,9 +20,8 @@
   <body>
     <div class="container">
       <div class="card">
-        <h1>Add New Entry</h1>
-
-        <p class="subtitle">What did you discover today?</p>
+        <h1 id="page-title"></h1>
+        <p class="subtitle" id="entry-subtitle">What did you discover today?</p>
 
         <form id="entry-form">
           <input type="text" id="title" placeholder="Title" required />
@@ -74,7 +73,11 @@
             placeholder="How do you wish to remember it?"
           ></textarea>
 
-          <button type="submit">Save Entry</button>
+          <div class="button-group">
+            <button id="save-btn">Save Entry</button>
+
+            <button type="button" id="cancel-btn">Cancel</button>
+          </div>
         </form>
       </div>
     </div>

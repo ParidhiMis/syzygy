@@ -17,6 +17,45 @@ const finishGroup = document.getElementById("finish-group");
 
 let rating = 0;
 
+const editEntryId = localStorage.getItem("editEntryId");
+
+const isEditMode = !!editEntryId;
+
+const pageTitle = document.getElementById("page-title");
+
+pageTitle.innerText = editEntryId ? "Edit Entry" : "Add New Entry";
+
+if(editEntryId){
+    loadEntry();
+}
+
+const subtitle = document.getElementById("entry-subtitle");
+const saveBtn = document.getElementById("save-btn");
+
+if(isEditMode){
+
+    pageTitle.textContent = "Edit Entry";
+    subtitle.textContent = "Update details for this entry.";
+    saveBtn.textContent = "Save Changes";
+
+}else{
+
+    pageTitle.textContent = "Add Entry";
+    subtitle.textContent = "What did you discover today?";
+    saveBtn.textContent = "Save Entry";
+
+}
+
+
+document
+.getElementById("cancel-btn")
+.addEventListener("click", () => {
+
+    localStorage.removeItem("editEntryId");
+    window.location.href = "dashboard.html";
+
+});
+
 /* ---------- STAR RATING ---------- */
 
 stars.forEach((star)=>{
@@ -79,6 +118,44 @@ updateDates();
 
 status.addEventListener("change",updateDates);
 
+async function loadEntry(){
+
+    const response = await fetch(
+        `http://127.0.0.1:8000/entry/${editEntryId}`
+    );
+
+    const entry = await response.json();
+
+    document.getElementById("title").value = entry.title;
+
+    document.getElementById("media-type").value = entry.media_type;
+
+    status.value = entry.status;
+
+    document.getElementById("review").value =
+        entry.review || "";
+
+    document.getElementById("start-date").value =
+        entry.start_date || "";
+
+    document.getElementById("finish-date").value =
+        entry.finish_date || "";
+
+    rating = entry.rating;
+
+    stars.forEach(star=>{
+
+        if(Number(star.dataset.value)<=rating){
+
+            star.classList.add("active");
+
+        }
+
+    });
+
+    updateDates();
+
+}
 
 /* ---------- SAVE ENTRY ---------- */
 
@@ -110,28 +187,39 @@ form.addEventListener("submit",async(e)=>{
 
     try{
 
-        const response=await fetch(
-            "http://127.0.0.1:8000/entry",
-            {
+        let url = "http://127.0.0.1:8000/entry";
 
-                method:"POST",
+        let method = "POST";
 
-                headers:{
-                    "Content-Type":"application/json"
-                },
+        if(editEntryId){
 
-                body:JSON.stringify(entry)
+            url = `http://127.0.0.1:8000/entry/${editEntryId}`;
 
-            }
-        );
+            method = "PUT";
 
-        const data=await response.json();
+        }
+
+        const response = await fetch(url,{
+
+            method,
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify(entry)
+
+        });
+
+        const data = await response.json();
 
         alert(data.message);
 
         if(response.ok){
 
-            window.location.href="dashboard.html";
+            localStorage.removeItem("editEntryId");
+
+            window.location.href = "dashboard.html";
 
         }
 

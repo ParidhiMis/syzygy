@@ -102,3 +102,54 @@ def get_entries(db, user_id):
         .filter(Entry.user_id == user_id)
         .all()
     )
+
+
+def get_entry(db, entry_id):
+
+    return (
+        db.query(Entry)
+        .filter(Entry.id == entry_id)
+        .first()
+    )
+
+
+def update_entry(db, entry_id, entry):
+
+    db_entry = (
+        db.query(Entry)
+        .filter(Entry.id == entry_id)
+        .first()
+    )
+
+    if not db_entry:
+        return {"message": "Entry not found"}
+
+    db_entry.title = entry.title
+    db_entry.media_type = entry.media_type
+    db_entry.status = entry.status
+    db_entry.rating = entry.rating
+    db_entry.review = entry.review
+    db_entry.start_date = entry.start_date
+    db_entry.finish_date = entry.finish_date
+
+    db.commit()
+    db.refresh(db_entry)
+
+    return {"message": "Entry updated successfully"}
+
+
+def delete_entry(db, entry_id):
+
+    db_entry = (
+        db.query(Entry)
+        .filter(Entry.id == entry_id)
+        .first()
+    )
+
+    if not db_entry:
+        return {"message": "Entry not found"}
+
+    db.delete(db_entry)
+    db.commit()
+
+    return {"message": "Entry deleted successfully"}

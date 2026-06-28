@@ -3,7 +3,15 @@ from sqlalchemy.orm import Session
 from database import engine, get_db
 from models import Base
 from schemas import UserCreate, UserLogin, EntryCreate
-from crud import create_user, login_user, create_entry, get_entries
+from crud import (
+    create_user,
+    login_user,
+    create_entry,
+    get_entries,
+    get_entry,
+    update_entry,
+    delete_entry
+)
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -49,6 +57,44 @@ def add_entry(
 ):
 
     return create_entry(db, entry)
+
+
+@app.get("/entry/{entry_id}")
+def read_entry(
+
+    entry_id: int,
+
+    db: Session = Depends(get_db)
+
+):
+
+    return get_entry(db, entry_id)
+
+
+@app.put("/entry/{entry_id}")
+def edit_entry(
+
+    entry_id: int,
+
+    entry: EntryCreate,
+
+    db: Session = Depends(get_db)
+
+):
+
+    return update_entry(db, entry_id, entry)
+
+
+@app.delete("/entries/{entry_id}")
+def remove_entry(
+
+    entry_id: int,
+
+    db: Session = Depends(get_db)
+
+):
+
+    return delete_entry(db, entry_id)
 
 
 @app.get("/entries/{user_id}")

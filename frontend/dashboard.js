@@ -59,72 +59,6 @@ document.getElementById("plus-btn").addEventListener("click", ()=>{
 });
 
 
-let allEntries = [];
-
-async function loadEntries(){
-
-    const response = await fetch(
-        `http://127.0.0.1:8000/entries/${userId}`
-    );
-
-    allEntries = await response.json();
-
-    displayEntries();
-
-}
-
-loadEntries();
-
-function displayEntries(){
-
-    const container =
-        document.getElementById("entries-container");
-
-    container.innerHTML = "";
-
-    const selectedDate =
-        localStorage.getItem("selectedDate");
-
-    const filtered =
-        allEntries.filter(entry =>
-            entry.start_date === selectedDate
-        );
-
-    if(filtered.length===0){
-
-        container.innerHTML =
-            "<p>No entries for this day.</p>";
-
-        return;
-
-    }
-
-    filtered.forEach(entry=>{
-
-        const card=document.createElement("div");
-
-        card.className="entry-card";
-
-        card.innerHTML=`
-
-            <h3>${entry.title}</h3>
-
-            <p>${entry.media_type}</p>
-
-            <p>Status: ${entry.status}</p>
-
-            <p>⭐ ${entry.rating ?? "-"}</p>
-
-            <p>${entry.review ?? ""}</p>
-
-        `;
-
-        container.appendChild(card);
-
-    });
-
-}
-
 const logoutBtn = document.getElementById("logout-btn");
 
 logoutBtn.addEventListener("click", () => {
@@ -142,3 +76,62 @@ profileBtn.addEventListener("click", () => {
     window.location.href = "profile.html";
 
 });
+
+const searchContainer = document.querySelector(".search-container");
+
+const searchBtn = document.getElementById("search-btn");
+
+const searchInput = document.getElementById("search-input");
+
+searchBtn.addEventListener("click",()=>{
+
+    searchContainer.classList.toggle("active");
+
+    if(searchContainer.classList.contains("active")){
+
+        searchInput.focus();
+
+    }else{
+
+        searchInput.value="";
+
+        searchInput.dispatchEvent(new Event("input"));
+
+    }
+
+});
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        searchContainer.classList.remove("active");
+
+        searchInput.value="";
+
+        searchInput.dispatchEvent(new Event("input"));
+
+    }
+
+});
+
+document.addEventListener("click",(e)=>{
+
+    if(!searchContainer.contains(e.target)){
+
+        searchContainer.classList.remove("active");
+
+        searchInput.value="";
+
+        searchInput.dispatchEvent(new Event("input"));
+
+    }
+
+});
+
+searchContainer.addEventListener("click",(e)=>{
+
+    e.stopPropagation();
+
+});
+
