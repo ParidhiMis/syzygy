@@ -25,25 +25,15 @@ menuBtn.addEventListener("click", () => {
 const calendarBtn = document.getElementById("calendar-btn");
 const calendarPanel = document.querySelector(".calendar-panel");
 
+const center = document.querySelector(".center");
+
 calendarBtn.addEventListener("click", () => {
 
     calendarPanel.classList.toggle("hidden");
-
-    if(calendarPanel.classList.contains("hidden")){
-
-        calendarBtn.style.left = "20px";
-
-    }
-    else{
-
-        calendarBtn.style.left = "390px";
-
-    }
+    calendarBtn.classList.toggle("closed");
+    center.classList.toggle("expanded");
 
 });
-
-calendarBtn.style.left = "390px";
-
 
 // Greeting
 const welcomeText = document.getElementById("welcome-text");
@@ -111,19 +101,6 @@ searchBtn.addEventListener("click",()=>{
 
 const clearFilters = document.getElementById("clear-filters");
 
-clearFilters.addEventListener("click", () => {
-
-    selectedType = "";
-    selectedStatus = "";
-    selectedRating = "";
-
-    typeFilter.value = "";
-    statusFilter.value = "";
-    ratingFilter.value = "";
-
-    displayEntries();
-
-});
 
 document.addEventListener("keydown",(e)=>{
 
