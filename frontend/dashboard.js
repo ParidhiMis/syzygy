@@ -12,11 +12,30 @@ if (!userId) {
 const menuBtn = document.getElementById("menu-btn");
 const sidebar = document.getElementById("sidebar");
 
+document
+.getElementById("profile-sidebar")
+.addEventListener("click", () => {
+
+    window.location.href = "profile.html";
+
+});
+
 menuBtn.addEventListener("click", () => {
 
     sidebar.classList.toggle("open");
-
     menuBtn.classList.toggle("active");
+
+    if(sidebar.classList.contains("open")){
+
+        searchContainer.classList.remove("active");
+
+        searchInput.value = "";
+        searchInput.dispatchEvent(new Event("input"));
+
+        filterBtn.style.display = "none";
+        filterPanel.classList.remove("open");
+
+    }
 
 });
 

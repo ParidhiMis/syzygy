@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Syzygy Profile</title>
+
+    <link rel="stylesheet" href="profile.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- ===================== TOP BAR ===================== -->
+
+      <header class="top-bar">
+        <button id="back-btn" class="back-btn">← Dashboard</button>
+
+        <h1>My Profile</h1>
+
+        <button id="edit-profile-btn" class="edit-btn">✏ Edit Profile</button>
+      </header>
+
+      <!-- ===================== MAIN ===================== -->
+
+      <main class="profile-layout">
+        <!-- LEFT COLUMN -->
+
+        <aside class="profile-card">
+          <img
+            id="profile-picture"
+            class="profile-picture"
+            src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
+          />
+
+          <h2 id="profile-name">juvu</h2>
+
+          <p id="profile-email">juvu@email.com</p>
+
+          <p class="joined">Joined July 2026</p>
+
+          <div class="divider"></div>
+
+          <h3>Your Collection</h3>
+
+          <div class="stats">
+            <div class="stat">
+              <span>🎬 Movies</span>
+              <span id="movie-count">0</span>
+            </div>
+
+            <div class="stat">
+              <span>📺 Series</span>
+              <span id="series-count">0</span>
+            </div>
+
+            <div class="stat">
+              <span>🌸 Anime</span>
+              <span id="anime-count">0</span>
+            </div>
+
+            <div class="stat">
+              <span>📚 Books</span>
+              <span id="book-count">0</span>
+            </div>
+
+            <div class="stat">
+              <span>🎮 Games</span>
+              <span id="game-count">0</span>
+            </div>
+
+            <div class="stat">
+              <span>⭐ Average Rating</span>
+              <span id="average-rating">0.0</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- RIGHT COLUMN -->
+
+        <section class="details-column">
+          <!-- ABOUT -->
+
+          <div class="card">
+            <h2>About Me</h2>
+
+            <p id="profile-bio">No bio yet.</p>
+          </div>
+
+          <!-- PERSONAL INFO -->
+
+          <div class="card">
+            <h2>Personal Information</h2>
+
+            <div class="info-grid">
+              <div class="info-row">
+                <span>Username</span>
+                <span id="username">juvu</span>
+              </div>
+
+              <div class="info-row">
+                <span>Gender</span>
+                <span id="gender">Female</span>
+              </div>
+
+              <div class="info-row">
+                <span>Pronouns</span>
+                <span id="pronouns">She / Her</span>
+              </div>
+
+              <div class="info-row">
+                <span>MBTI</span>
+                <span id="mbti">INFP</span>
+              </div>
+
+              <div class="info-row">
+                <span>Country</span>
+                <span id="country">India</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAVORITE GENRES -->
+
+          <div class="card">
+            <h2>Favourite Genres</h2>
+
+            <div id="genre-tags" class="tag-container">
+              <span class="tag">Fantasy</span>
+
+              <span class="tag">Mystery</span>
+
+              <span class="tag">Psychological</span>
+
+              <span class="tag">Romance</span>
+
+              <span class="tag">Sci-Fi</span>
+            </div>
+          </div>
+
+          <!-- FAVORITES -->
+
+          <div class="card">
+            <h2>Favorites</h2>
+
+            <div class="favorite-list">
+              <div class="favorite-item">
+                🎬
+                <span id="favorite-movie"> None </span>
+              </div>
+
+              <div class="favorite-item">
+                🌸
+                <span id="favorite-anime"> None </span>
+              </div>
+
+              <div class="favorite-item">
+                📚
+                <span id="favorite-book"> None </span>
+              </div>
+
+              <div class="favorite-item">
+                🎮
+                <span id="favorite-game"> None </span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ===================== RECENT ACTIVITY ===================== -->
+
+      <section class="activity-card">
+        <h2>Recent Activity</h2>
+
+        <div id="recent-activity">
+          <!-- JS adds cards here -->
+        </div>
+      </section>
+    </div>
+    <!-- ================= EDIT PROFILE MODAL ================= -->
+
+    <div class="modal" id="edit-modal">
+      <div class="modal-content">
+        <h2>Edit Profile</h2>
+
+        <label>Profile Picture</label>
+
+        <input type="file" id="picture-input" accept="image/*" />
+
+        <label>Username</label>
+        <input type="text" id="edit-username" />
+
+        <label>Email</label>
+        <input type="email" id="edit-email" />
+
+        <label>Bio</label>
+        <textarea id="edit-bio"></textarea>
+
+        <label>Gender</label>
+
+        <select id="edit-gender">
+          <option value="">Select</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Non-binary</option>
+          <option>Prefer not to say</option>
+        </select>
+
+        <label>Pronouns</label>
+
+        <input type="text" id="edit-pronouns" placeholder="She/Her" />
+
+        <label>MBTI</label>
+
+        <select id="edit-mbti">
+          <option value="">Select</option>
+
+          <option>INTJ</option>
+          <option>INTP</option>
+          <option>ENTJ</option>
+          <option>ENTP</option>
+
+          <option>INFJ</option>
+          <option>INFP</option>
+          <option>ENFJ</option>
+          <option>ENFP</option>
+
+          <option>ISTJ</option>
+          <option>ISFJ</option>
+          <option>ESTJ</option>
+          <option>ESFJ</option>
+
+          <option>ISTP</option>
+          <option>ISFP</option>
+          <option>ESTP</option>
+          <option>ESFP</option>
+        </select>
+
+        <label>Country</label>
+
+        <input type="text" id="edit-country" />
+
+        <label>Favorite Genres</label>
+
+        <input
+          type="text"
+          id="edit-genres"
+          placeholder="Fantasy, Mystery, Romance"
+        />
+
+        <label>Favorite Movie</label>
+        <input type="text" id="edit-favorite-movie" />
+
+        <label>Favorite Anime</label>
+        <input type="text" id="edit-favorite-anime" />
+
+        <label>Favorite Book</label>
+        <input type="text" id="edit-favorite-book" />
+
+        <label>Favorite Game</label>
+        <input type="text" id="edit-favorite-game" />
+
+        <div class="modal-buttons">
+          <button id="cancel-edit">Cancel</button>
+
+          <button id="save-profile">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="profile.js"></script>
+  </body>
+</html>

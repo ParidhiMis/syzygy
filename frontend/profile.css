@@ -1,0 +1,677 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'DM Sans',sans-serif;
+
+    background:#966FD6;
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:40px 60px;
+
+}
+
+/* ==========================================================
+   TOP BAR
+========================================================== */
+
+.top-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+
+}
+
+.top-bar h1{
+
+    font-size:56px;
+
+    font-family:'Outfit',sans-serif;
+
+    font-weight:800;
+
+}
+
+.back-btn,
+.edit-btn{
+
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(20px);
+
+    font-size:17px;
+
+    transition:.25s;
+
+}
+
+.back-btn:hover,
+.edit-btn:hover{
+
+    background:rgba(255,255,255,.28);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   LAYOUT
+========================================================== */
+
+.profile-layout{
+
+    display:grid;
+
+    grid-template-columns:340px 1fr;
+
+    gap:35px;
+
+    align-items:start;
+
+}
+
+/* ==========================================================
+   LEFT CARD
+========================================================== */
+
+.profile-card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    text-align:center;
+
+}
+
+.profile-picture{
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid rgba(255,255,255,.35);
+
+    margin-bottom:20px;
+
+}
+
+.profile-card h2{
+
+    font-size:40px;
+
+    margin-bottom:8px;
+
+}
+
+.profile-card p{
+
+    opacity:.85;
+
+}
+
+.joined{
+
+    margin-top:8px;
+
+    font-size:14px;
+
+}
+
+.divider{
+
+    height:1px;
+
+    background:rgba(255,255,255,.25);
+
+    margin:30px 0;
+
+}
+
+.profile-card h3{
+
+    text-align:left;
+
+    margin-bottom:18px;
+
+}
+
+/* ==========================================================
+   STATS
+========================================================== */
+
+.stats{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.stat{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* ==========================================================
+   RIGHT COLUMN
+========================================================== */
+
+.details-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:28px;
+
+    padding:30px;
+
+}
+
+.card h2{
+
+    margin-bottom:22px;
+
+    font-size:32px;
+
+    font-family:'Outfit',sans-serif;
+
+}
+
+/* ==========================================================
+   ABOUT
+========================================================== */
+
+#profile-bio{
+
+    line-height:1.8;
+
+    opacity:.9;
+
+}
+
+/* ==========================================================
+   INFO GRID
+========================================================== */
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+.info-row{
+
+    background:rgba(255,255,255,.08);
+
+    padding:18px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.info-row span:first-child{
+
+    opacity:.75;
+
+}
+
+.info-row span:last-child{
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   TAGS
+========================================================== */
+
+.tag-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+}
+
+.tag{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:white;
+
+    color:#966FD6;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   FAVORITES
+========================================================== */
+
+.favorite-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.favorite-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.08);
+
+    font-size:18px;
+
+}
+
+/* ==========================================================
+   RECENT ACTIVITY
+========================================================== */
+
+.activity-card{
+
+    margin-top:35px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:28px;
+
+    padding:30px;
+
+}
+
+.activity-card h2{
+
+    font-size:32px;
+
+    margin-bottom:25px;
+
+    font-family:'Outfit',sans-serif;
+
+}
+
+#recent-activity{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:1000px){
+
+    .profile-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .top-bar h1{
+
+        font-size:42px;
+
+    }
+
+}
+
+/* ==========================================================
+   EDIT PROFILE MODAL
+========================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:9999;
+
+}
+
+.modal.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ==========================================================
+   MODAL BOX
+========================================================== */
+
+.modal-content{
+
+    width:min(650px,90vw);
+
+    max-height:88vh;
+
+    overflow-y:auto;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(30px);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    color:white;
+
+    box-shadow:0 25px 50px rgba(0,0,0,.25);
+
+    transform:translateY(35px) scale(.95);
+
+    transition:.35s;
+
+}
+
+.modal.show .modal-content{
+
+    transform:translateY(0) scale(1);
+
+}
+
+.modal-content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.3);
+
+    border-radius:999px;
+
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.modal-content h2{
+
+    font-family:'Outfit',sans-serif;
+
+    font-size:34px;
+
+    margin-bottom:28px;
+
+}
+
+/* ==========================================================
+   LABELS
+========================================================== */
+
+.modal-content label{
+
+    display:block;
+
+    margin-top:20px;
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select{
+
+    width:100%;
+
+    border:none;
+    outline:none;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.95);
+
+    color:#555;
+
+    font-size:15px;
+
+    font-family:inherit;
+
+}
+
+.modal-content textarea{
+
+    resize:none;
+
+    min-height:100px;
+
+}
+
+/* ==========================================================
+   FILE INPUT
+========================================================== */
+
+#picture-input{
+
+    padding:12px;
+
+    cursor:pointer;
+
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:14px;
+
+    margin-top:35px;
+
+}
+
+.modal-buttons button{
+
+    border:none;
+
+    padding:13px 28px;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+#cancel-edit{
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+}
+
+#cancel-edit:hover{
+
+    background:rgba(255,255,255,.25);
+
+}
+
+#save-profile{
+
+    background:white;
+
+    color:#966FD6;
+
+    font-weight:700;
+
+}
+
+#save-profile:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   SELECT
+========================================================== */
+
+.modal-content select{
+
+    cursor:pointer;
+
+}
+
+/* ==========================================================
+   INPUT FOCUS
+========================================================== */
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus{
+
+    box-shadow:0 0 0 3px rgba(255,255,255,.25);
+
+}

@@ -543,6 +543,13 @@ body{
 
 }
 
+.sidebar.open ~ .main .search-container{
+
+    opacity:0;
+    pointer-events:none;
+
+}
+
 .empty-search{
 
     width:100%;
