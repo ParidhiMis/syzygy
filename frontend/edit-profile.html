@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Edit Profile</title>
+
+    <link rel="stylesheet" href="edit-profile.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="top-bar">
+        <button id="back-btn" class="back-btn">← Cancel</button>
+
+        <h1>Edit Profile</h1>
+
+        <button id="save-btn" class="save-btn">Save</button>
+      </header>
+
+      <main class="edit-card">
+        <div class="picture-section">
+          <img
+            id="profile-picture-preview"
+            class="profile-picture"
+            src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
+          />
+
+          <label> Profile Picture URL </label>
+
+          <input id="profile-picture" type="text" placeholder="https://..." />
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>Username</label>
+
+            <input id="username" type="text" />
+          </div>
+
+          <div class="field">
+            <label>Bio</label>
+
+            <textarea id="bio" rows="4"></textarea>
+          </div>
+
+          <div class="field">
+            <label>Gender</label>
+
+            <input id="gender" type="text" />
+          </div>
+
+          <div class="field">
+            <label>Pronouns</label>
+
+            <input id="pronouns" type="text" placeholder="she/her" />
+          </div>
+
+          <div class="field">
+            <label>MBTI</label>
+
+            <input id="mbti" type="text" placeholder="INFJ" />
+          </div>
+
+          <div class="field">
+            <label>Country</label>
+
+            <input id="country" type="text" />
+          </div>
+
+          <div class="field">
+            <label>Favourite Genres</label>
+
+            <input
+              id="favorite-genres"
+              type="text"
+              placeholder="Fantasy, Romance, Mystery"
+            />
+          </div>
+
+          <div class="field">
+            <label>Favourite Movie</label>
+
+            <input id="favorite-movie" type="text" />
+          </div>
+
+          <div class="field">
+            <label>Favourite Anime</label>
+
+            <input id="favorite-anime" type="text" />
+          </div>
+
+          <div class="field">
+            <label>Favourite Book</label>
+
+            <input id="favorite-book" type="text" />
+          </div>
+
+          <div class="field">
+            <label>Favourite Game</label>
+
+            <input id="favorite-game" type="text" />
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="edit-profile.js"></script>
+  </body>
+</html>

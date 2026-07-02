@@ -153,3 +153,44 @@ def delete_entry(db, entry_id):
     db.commit()
 
     return {"message": "Entry deleted successfully"}
+
+
+def get_user_profile(db, user_id):
+
+    return (
+        db.query(User)
+        .filter(User.id == user_id)
+        .first()
+    )
+
+
+def update_user_profile(db, user_id, profile):
+
+    db_user = (
+        db.query(User)
+        .filter(User.id == user_id)
+        .first()
+    )
+
+    if not db_user:
+        return {"message": "User not found"}
+
+    db_user.username = profile.username
+    db_user.bio = profile.bio
+    db_user.gender = profile.gender
+    db_user.pronouns = profile.pronouns
+    db_user.mbti = profile.mbti
+    db_user.country = profile.country
+
+    db_user.favorite_movie = profile.favorite_movie
+    db_user.favorite_anime = profile.favorite_anime
+    db_user.favorite_book = profile.favorite_book
+    db_user.favorite_game = profile.favorite_game
+
+    db_user.favorite_genres = profile.favorite_genres
+    db_user.profile_picture = profile.profile_picture
+
+    db.commit()
+    db.refresh(db_user)
+
+    return db_user

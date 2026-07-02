@@ -24,9 +24,9 @@ document
 
 document
 .getElementById("edit-profile-btn")
-.addEventListener("click",()=>{
+.addEventListener("click", () => {
 
-    alert("Edit Profile page coming soon!");
+    window.location.href = "edit-profile.html";
 
 });
 
@@ -34,92 +34,102 @@ document
    Load User Details
 ========================= */
 
-const username =
-    localStorage.getItem("currentUser") || "Guest";
+async function loadUserProfile(){
 
-const email =
-    localStorage.getItem("email") || "No email added";
+    try{
 
-const bio =
-    localStorage.getItem("bio") ||
-    "No bio yet.";
+        const response = await fetch(
+            `http://127.0.0.1:8000/user/${userId}`
+        );
 
-const gender =
-    localStorage.getItem("gender") || "—";
+        if(!response.ok){
 
-const pronouns =
-    localStorage.getItem("pronouns") || "—";
+            throw new Error("Failed to load profile");
 
-const mbti =
-    localStorage.getItem("mbti") || "—";
+        }
 
-const country =
-    localStorage.getItem("country") || "—";
+        const user = await response.json();
 
-const picture =
-    localStorage.getItem("profilePicture");
+    document.getElementById("profile-name").textContent =
+        user.username;
 
-document.getElementById("profile-name").textContent = username;
+    document.getElementById("profile-email").textContent =
+        user.email;
 
-document.getElementById("profile-email").textContent = email;
+    document.getElementById("profile-bio").textContent =
+        user.bio || "No bio yet.";
 
-document.getElementById("profile-bio").textContent = bio;
+    document.getElementById("username").textContent =
+        user.username;
 
-document.getElementById("username").textContent = username;
+    document.getElementById("gender").textContent =
+        user.gender || "—";
 
-document.getElementById("gender").textContent = gender;
+    document.getElementById("pronouns").textContent =
+        user.pronouns || "—";
 
-document.getElementById("pronouns").textContent = pronouns;
+    document.getElementById("mbti").textContent =
+        user.mbti || "—";
 
-document.getElementById("mbti").textContent = mbti;
+    document.getElementById("country").textContent =
+        user.country || "—";
 
-document.getElementById("country").textContent = country;
+    document.getElementById("favorite-movie").textContent =
+        user.favorite_movie || "None";
 
-if(picture){
+    document.getElementById("favorite-anime").textContent =
+        user.favorite_anime || "None";
 
-    document.getElementById("profile-picture").src = picture;
+    document.getElementById("favorite-book").textContent =
+        user.favorite_book || "None";
+
+    document.getElementById("favorite-game").textContent =
+        user.favorite_game || "None";
+
+    if(user.profile_picture){
+
+        document.getElementById("profile-picture").src =
+            user.profile_picture;
+
+    }
+
+    const genreContainer =
+        document.getElementById("genre-tags");
+
+    genreContainer.innerHTML = "";
+
+    if(user.favorite_genres){
+
+        user.favorite_genres
+            .split(",")
+
+            .forEach(genre=>{
+
+                const tag =
+                    document.createElement("span");
+
+                tag.className = "tag";
+
+                tag.textContent =
+                    genre.trim();
+
+                genreContainer.appendChild(tag);
+
+            });
+
+    }
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Couldn't load profile.");
+
+    }
 
 }
-
-/* =========================
-   Genres
-========================= */
-
-const genres =
-    JSON.parse(localStorage.getItem("genres")) || [];
-
-const genreContainer =
-    document.getElementById("genre-tags");
-
-genreContainer.innerHTML = "";
-
-genres.forEach(genre=>{
-
-    const tag = document.createElement("span");
-
-    tag.className = "tag";
-
-    tag.textContent = genre;
-
-    genreContainer.appendChild(tag);
-
-});
-
-/* =========================
-   Favorites
-========================= */
-
-document.getElementById("favorite-movie").textContent =
-    localStorage.getItem("favoriteMovie") || "None";
-
-document.getElementById("favorite-anime").textContent =
-    localStorage.getItem("favoriteAnime") || "None";
-
-document.getElementById("favorite-book").textContent =
-    localStorage.getItem("favoriteBook") || "None";
-
-document.getElementById("favorite-game").textContent =
-    localStorage.getItem("favoriteGame") || "None";
 
 /* =========================
    Collection Stats
@@ -127,21 +137,41 @@ document.getElementById("favorite-game").textContent =
 
 let entries = [];
 
-async function loadProfile(){
+async function loadEntries(){
 
-    const response = await fetch(
-        `http://127.0.0.1:8000/entries/${userId}`
-    );
+    try{
 
-    entries = await response.json();
+        const response = await fetch(
+            `http://127.0.0.1:8000/entries/${userId}`
+        );
 
-    updateStats();
+        if(!response.ok){
 
-    updateRecentActivity();
+            throw new Error("Failed to load entries");
+
+        }
+
+        entries = await response.json();
+
+        updateStats();
+
+        updateRecentActivity();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Couldn't load your collection.");
+
+    }
 
 }
 
-loadProfile();
+loadUserProfile();
+
+loadEntries();
 
 function updateStats(){
 
@@ -202,7 +232,7 @@ function updateRecentActivity(){
             <strong>${entry.title}</strong><br>
             ${entry.media_type} •
             ${entry.status}<br>
-            ${"⭐".repeat(entry.rating)}
+            ${"⭐".repeat(entry.rating || 0)}
         `;
 
         container.appendChild(card);

@@ -2,7 +2,13 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from database import engine, get_db
 from models import Base
-from schemas import UserCreate, UserLogin, EntryCreate
+from schemas import (
+    UserCreate,
+    UserLogin,
+    EntryCreate,
+    UserProfileUpdate,
+    UserResponse
+)
 from crud import (
     create_user,
     login_user,
@@ -10,7 +16,9 @@ from crud import (
     get_entries,
     get_entry,
     update_entry,
-    delete_entry
+    delete_entry,
+    get_user_profile,
+    update_user_profile
 )
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -107,3 +115,29 @@ def read_entries(
 ):
 
     return get_entries(db, user_id)
+
+
+@app.get("/user/{user_id}", response_model=UserResponse)
+def read_user(
+
+    user_id: int,
+
+    db: Session = Depends(get_db)
+
+):
+
+    return get_user_profile(db, user_id)
+
+
+@app.put("/user/{user_id}")
+def edit_user(
+
+    user_id: int,
+
+    user: UserProfileUpdate,
+
+    db: Session = Depends(get_db)
+
+):
+
+    return update_user_profile(db, user_id, user)

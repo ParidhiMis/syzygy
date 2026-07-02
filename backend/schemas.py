@@ -27,6 +27,67 @@ class UserResponse(BaseModel):
         from_attributes = True
 
 
+class UserProfile(BaseModel):
+
+    id: int
+
+    username: str
+
+    email: EmailStr
+
+    bio: str | None = None
+
+    gender: str | None = None
+
+    pronouns: str | None = None
+
+    mbti: str | None = None
+
+    country: str | None = None
+
+    favorite_movie: str | None = None
+
+    favorite_anime: str | None = None
+
+    favorite_book: str | None = None
+
+    favorite_game: str | None = None
+
+    favorite_genres: str | None = None
+
+    profile_picture: str | None = None
+
+    class Config:
+        from_attributes = True
+
+
+class UserProfileUpdate(BaseModel):
+
+    username: str
+
+    bio: str | None = None
+
+    gender: str | None = None
+
+    pronouns: str | None = None
+
+    mbti: str | None = None
+
+    country: str | None = None
+
+    favorite_movie: str | None = None
+
+    favorite_anime: str | None = None
+
+    favorite_book: str | None = None
+
+    favorite_game: str | None = None
+
+    favorite_genres: str | None = None
+
+    profile_picture: str | None = None
+
+
 class EntryCreate(BaseModel):
 
     title: str
