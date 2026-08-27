@@ -121,7 +121,7 @@ status.addEventListener("change",updateDates);
 async function loadEntry(){
 
     const response = await fetch(
-        `http://127.0.0.1:8000/entry/${editEntryId}`
+        `${API_URL}/entry/${entryId}`
     );
 
     const entry = await response.json();
@@ -187,13 +187,13 @@ form.addEventListener("submit",async(e)=>{
 
     try{
 
-        let url = "http://127.0.0.1:8000/entry";
+        let url = `${API_URL}/entry`;
 
         let method = "POST";
 
         if(editEntryId){
 
-            url = `http://127.0.0.1:8000/entry/${editEntryId}`;
+            url = `${API_URL}/entry/${entryId}`;
 
             method = "PUT";
 

@@ -27,7 +27,7 @@ async function loadProfile(){
     try{
 
         const response = await fetch(
-            `http://127.0.0.1:8000/user/${userId}`
+            `${API_URL}/user/${userId}`
         );
 
         if(!response.ok){
@@ -169,7 +169,7 @@ async function saveProfile(){
 
         const response = await fetch(
 
-            `http://127.0.0.1:8000/user/${userId}`,
+            `${API_URL}/user/${userId}`,
 
             {
 

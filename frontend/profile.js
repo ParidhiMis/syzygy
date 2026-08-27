@@ -39,7 +39,7 @@ async function loadUserProfile(){
     try{
 
         const response = await fetch(
-            `http://127.0.0.1:8000/user/${userId}`
+            `${API_URL}/user/${userId}`
         );
 
         if(!response.ok){
@@ -142,7 +142,7 @@ async function loadEntries(){
     try{
 
         const response = await fetch(
-            `http://127.0.0.1:8000/entries/${userId}`
+            `${API_URL}/entries/${userId}`
         );
 
         if(!response.ok){

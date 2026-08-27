@@ -12,9 +12,9 @@ let searchQuery = "";
 
 async function loadEntries(){
 
-    const response = await fetch(
-        `http://127.0.0.1:8000/entries/${calendarUserId}`
-    );
+   const response = await fetch(
+    `${API_URL}/entries/${calendarUserId}`
+);
 
     allEntries = await response.json();
 
@@ -367,7 +367,7 @@ div.querySelector(".delete-btn").addEventListener("click", async () => {
     if(!confirm("Delete this entry?")) return;
 
     await fetch(
-        `http://127.0.0.1:8000/entries/${entry.id}`,
+        `${API_URL}/entries/${entry.id}`,
         {
             method: "DELETE"
         }

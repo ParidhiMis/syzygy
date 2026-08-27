@@ -1,6 +1,4 @@
 const userId = localStorage.getItem("userId");
-const filterBtn = document.getElementById("filter-btn");
-const filterPanel = document.getElementById("filter-panel");
 
 if (!userId) {
 
@@ -8,9 +6,29 @@ if (!userId) {
 
 }
 
-// Sidebar
-const menuBtn = document.getElementById("menu-btn");
-const sidebar = document.getElementById("sidebar");
+const filterBtn =
+    document.getElementById("filter-btn");
+
+const filterPanel =
+    document.getElementById("filter-panel");
+
+const menuBtn =
+    document.getElementById("menu-btn");
+
+const sidebar =
+    document.getElementById("sidebar");
+
+const searchContainer =
+    document.querySelector(".search-container");
+
+const searchBtn =
+    document.getElementById("search-btn");
+
+const searchInput =
+    document.getElementById("search-input");
+
+const clearFilters =
+    document.getElementById("clear-filters");
 
 document
 .getElementById("profile-sidebar")
@@ -88,12 +106,6 @@ profileBtn.addEventListener("click", () => {
 
 });
 
-const searchContainer = document.querySelector(".search-container");
-
-const searchBtn = document.getElementById("search-btn");
-
-const searchInput = document.getElementById("search-input");
-
 searchBtn.addEventListener("click",()=>{
 
     searchContainer.classList.toggle("active");
@@ -117,9 +129,6 @@ searchBtn.addEventListener("click",()=>{
     }
 
 });
-
-const clearFilters = document.getElementById("clear-filters");
-
 
 document.addEventListener("keydown",(e)=>{
 
